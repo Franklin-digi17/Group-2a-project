@@ -4,42 +4,26 @@ const express = require('express');
 const app = express();
 app.use(express.json()); // Parse JSON bodies
 
-let todos = [
-  { id: 1, task: 'Learn Node.js', completed: false },
-  { id: 2, task: 'Build CRUD API', completed: false },
-  { id: 3, task: 'Get a first class', completed: true },
-  { id: 4, task: 'Become like Jesus', completed: true},
-  { id: 5, task: 'Fight lions', completed: true},
-  { id: 6, task: 'Build a Car', completed: false },
-];
-
+let tStudentRecords = [
+  { id:1, Name: "Umukoro Franklin", MatricNumber: 'BTD/Ba-Dev/26/1499', PhoneNumber: +2349023723181 },
+  { id:2, Name: "Olatise Michael", MatricNumber: 'BTD/Ba-Dev/26/1500', PhoneNumber: +234804713583 },
+  { id:3, Name: "Babatunde Diamond", MatricNumber: 'BTD/Ba-Dev/26/1501', PhoneNumber: +2349002353751 },
+  { id:4, Name: "Shirley Laura", MatricNumber: 'BTD/Ba-Dev/26/1502', PhoneNumber: +442399101345 },
+]
 // GET All – Read
-app.get('/todos', (req, res) => {
+app.get('/Student Records', (req, res) => {
   res.status(200).json(todos); // Send array as JSON
 });
 
  // GET ONLY SINGULAR id
-app.get('/todos/:id', (req, res) => {
+app.get('/StudentRecords/:id', (req, res) => {
   const todo = todos.find((t) => t.id === parseInt(req.params.id)); // Array.find()
   res.status(200).json(todo); // Send array as JSON
 });
 
 
-//filter false:active
-
-export const getAllActiveTasks = (req, res) => {
-  try{
-    const task = todos.find(todo => todo.active === true)
-    if(!task) return res.status.json({message: "All task completed"})
-      return res.status(200).hson({message: "success", task})
-  } catch(e){
-    return
-    res.status(500).json({message: "Failed"})
-  }
-};
-
 // POST New – Create
-app.post('/todos', (req, res) => {
+app.post('/StudentRecords', (req, res) => {
   const {task, completed} = { id: todos.length + 1, ...req.body }; // Auto-ID
   if(!task) return res.status(404).json({ message: 'Missing field'});//wor
   todos.push(newTodo);
