@@ -1,7 +1,11 @@
 const StudentRecords = require('./studentData.js')
 
 const getAllStudentsRecords = (req, res) => {
-  return res.status(200).json({message: "get all students records"})
+  try {
+  return res.status(200).json({message: "students records", StudentRecords})
+  }catch(e){
+    return res.status(500).json({message: "Failed to get All students Records"})
+  }
 }
 
 const getAStudentRecord = (req, res) => {
