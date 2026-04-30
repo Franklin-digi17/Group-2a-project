@@ -24,7 +24,8 @@ app.get('/StudentRecords/:id', (req, res) => {
 
 // POST New – Create
 app.post('/StudentRecords', (req, res) => {
-  const {task, completed} = { id: todos.length + 1, ...req.body }; // Auto-ID
+  // you have to update what you fetch here
+  const {task, completed, id} = { id: todos.length + 1, ...req.body }; // Auto-ID
   if(!task) return res.status(404).json({ message: 'Missing field'});//wor
   todos.push(newTodo);
   res.status(201).json(newTodo); // Echo back
